@@ -1,0 +1,17 @@
+import asyncio
+from krutrim_cloud import AsyncKrutrimCloud
+
+client = AsyncKrutrimCloud()
+
+
+async def main() -> None:
+    stable_diffusion_response = await client.images.generations.diffusion(
+        model_name="diffusion1XL",
+        image_height=1024,
+        image_width=1024,
+        prompt="Dog with hat on beach"
+    )
+    print(stable_diffusion_response.created)
+
+
+asyncio.run(main())
